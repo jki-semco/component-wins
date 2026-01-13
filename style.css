@@ -1,0 +1,519 @@
+:root {
+      --primary: #093349;
+      --secondary: #4b5563;
+      --accent: #55C1AC;
+      --bg: #f9fafb;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg);
+      color: var(--primary);
+      line-height: 1.6;
+      padding: 2rem;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--white);
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    .logo-icon {
+      height: 32px; 
+      width: auto;
+      display: inline-block;
+      margin-top: 4.5px;
+    }
+
+    .nav-search input {
+      padding: 0.4rem 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+
+    .nav-search {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #search-clear {
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--accent);
+      transition: transform 0.2s ease;
+    }
+
+    #search-clear:hover {
+      transform: scale(1.2);
+    }
+
+    .highlight {
+      background-color: #fffcc1;
+      font-weight: bold;
+      border-radius: 3px;
+    }
+
+    #no-results {
+      text-align: center;
+      color: var(--secondary);
+      margin-top: 2rem;
+      display: none;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 1.5px 2px 3px #4b5563;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: var(--secondary);
+    }
+
+    .cta-bubble-container {
+      position: fixed;
+      top: 200px;
+      right: 3rem;
+      z-index: 999;
+      opacity: 1;
+      transition: all 0.8s ease-out;
+    }
+
+    .cta-bubble {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      display: block;
+    }
+
+    .cta-bubble:hover {
+      transform: scale(1.1);
+      background-color: #3cae99; 
+    }
+
+    .cta-bubble::after {
+      content: attr(data-text);
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%) scale(0.9);
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: all 0.3s ease;
+      pointer-events: none;
+      margin-right: 0.5rem;
+    }
+
+    .cta-bubble:hover::after {
+      opacity: 1;
+      transform: translateY(-50%) scale(1);
+    }
+
+    .cta-bubble::before {
+      content: '';
+      position: absolute;
+      right: 90%;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 6px solid transparent;
+      border-right-color: var(--primary);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .cta-bubble:hover::before {
+      opacity: 1;
+    }
+
+    .cta-bubble {
+      animation: floaty 3s ease-in-out infinite;
+    }
+
+    @keyframes floaty {
+      0%, 100% { bottom: 3rem; }
+      50% { bottom: 3.5rem; }
+    }
+
+    .emoji {
+      font-size: 1.5rem;
+      display: inline-block;
+      animation: emoji-pulse 2.2s infinite ease-in-out;
+      line-height: 60px; 
+      text-align: center;
+      width: 100%;
+    }
+
+    @keyframes emoji-pulse {
+        0%, 100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.15);
+        }
+      }
+
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: var(--white);
+      border-radius: 9px;
+      padding: 1.5rem;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .card .short {
+      font-size: 1rem;
+      color: var(--secondary);
+    }
+
+    .card .more {
+        margin-top: 1rem;
+        font-size: 0.95rem;
+        color: var(--primary);
+        transition: all 0.4s ease;
+        overflow: hidden;
+    }
+
+    .card .more:not(.hidden) {
+        text-align: justify;
+    }
+    
+  .card-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin: 1rem auto 0;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: block;
+  }
+
+  .card-image.small {
+    width: 90%;
+    height: auto;
+  }
+
+  .card .more a {
+    color: var(--accent); 
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  .card .more a:hover {
+    color: #093349; 
+    border-bottom: 1px solid #093349;
+    background-color: #e6f5f2; 
+    padding: 0 0.2rem;
+    border-radius: 4px;
+  }
+    
+  .toggle {
+    margin-top: 1rem;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .toggle:hover {
+    background-color: #093349;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .gallery {
+    margin-top: 4rem;
+    overflow: hidden;
+  }
+
+  .slider-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .slider-track {
+    display: flex;
+    width: max-content;
+    gap: 1rem;
+    animation: scrollSlider 20s linear infinite;
+  }
+
+  .slide {
+    min-width: 300px; 
+    flex-shrink: 0;
+  }
+
+  .slide img {
+    width: 300px;         
+    height: 200px;       
+    object-fit: cover;    
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .slider-track:hover {
+    animation-play-state: paused;
+  }
+
+  .infinite-loop {
+    animation: scrollSlider 30s linear infinite;
+  }
+
+  @keyframes scrollSlider {
+    0% {
+    transform: translateX(0);
+      }
+    100% {
+    transform: translateX(-50%);
+    }
+  }
+
+  .full-block {
+    scroll-snap-align: start;
+  }
+
+  .team-section {
+    padding: 4rem 2rem;
+    background-color: #f9fafb;
+    text-align: center;
+  }
+
+  .team-section h2 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 2rem;
+  }
+
+  .team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .team-card {
+    width: 250px;
+    perspective: 1000px;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  .team-card:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-back {
+    background-color: var(--white);
+    color: var(--primary);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    font-size: 0.75rem;
+  }
+
+  .team-info {
+    margin-top: 1rem;
+  }
+
+  .team-info h4 {
+    margin-bottom: 0.25rem;
+    font-size: 1.1rem;
+    color: var(--accent);
+  }
+
+  .team-info p {
+    margin: 0.2rem 0;
+    font-size: 0.9rem;
+  }
+
+  .team-info a {
+    color: var(--primary)
+  }
+
+  .team-info a:hover {
+      color: var(--accent);
+    }
+
+  footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--secondary);
+      padding: 2rem 0 1rem;
+      border-top: 1px solid #e5e7eb;
+    }
+
+  .back-home {
+    position: absolute;
+    font-size: 1.5rem;
+    text-align: left;
+    text-decoration: none;
+    color: var(--secondary);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .back-home:hover {
+    transform: scale(1.2);
+  }
+
+  @media (max-width: 500px) {
+      header h1 {
+      font-size: 1.8rem;
+    }
+
+  .card h2 {
+      font-size: 1.25rem;
+    }
+    }
+
+  .skewed-highlight {
+      position: relative;
+      display: inline-block;
+      z-index: 1;
+      font-weight: 600;
+    }
+
+  .skewed-highlight::before {
+      content: '';
+      position: absolute;
+      left: 0.3em;
+      bottom: 0.08em;
+      width: 100%;
+      height: 50%;
+      background-color: var(--accent);
+      transform: skew(-15deg);
+      z-index: -1;
+      border-radius: 4px;
+      opacity: 0.7;
+    }
+
+    #loader-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: var(--bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+
+    #loader .emoji {
+      font-size: 3rem;
+      animation: pulse 1.5s infinite ease-in-out;
+      margin-bottom: 1rem;
+    }
+
+    #loader p {
+      font-size: 1rem;
+      color: var(--secondary);
+      font-weight: 500;
+    }
+
+    body.loaded #loader-wrapper {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
