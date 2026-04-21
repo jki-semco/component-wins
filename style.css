@@ -269,6 +269,16 @@
     padding: 0 0.2rem;
     border-radius: 4px;
   }
+
+  .card-date {
+    position: absolute;
+    bottom: 0.8rem;
+    right: 1rem;
+    font-size: 0.7rem;
+    color: var(--secondary);
+    opacity: 0.5;
+    pointer-events: none;
+  }
     
   .toggle {
     margin-top: 1rem;
