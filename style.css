@@ -208,8 +208,13 @@
       background-color: var(--white);
       border-radius: 9px;
       padding: 1.5rem;
+      padding-bottom: 3rem;
       box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
       transition: transform 0.3s ease;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 320px;
     }
 
     .card:hover {
@@ -225,6 +230,7 @@
     .card .short {
       font-size: 1rem;
       color: var(--secondary);
+      flex-grow: 1;
     }
 
     .card .more {
@@ -239,66 +245,67 @@
         text-align: justify;
     }
     
-  .card-image {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    margin: 1rem auto 0;
-    border-radius: 6px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: block;
-  }
+    .card-image {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      margin: 1rem auto 0;
+      border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: block;
+    }
 
-  .card-image.small {
-    width: 90%;
-    height: auto;
-  }
+    .card-image.small {
+      width: 90%;
+      height: auto;
+    }
 
-  .card .more a {
-    color: var(--accent); 
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    border-bottom: 1px solid transparent;
-  }
+    .card .more a {
+      color: var(--accent); 
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid transparent;
+    }
 
-  .card .more a:hover {
-    color: #093349; 
-    border-bottom: 1px solid #093349;
-    background-color: #e6f5f2; 
-    padding: 0 0.2rem;
-    border-radius: 4px;
-  }
+    .card .more a:hover {
+      color: #093349; 
+      border-bottom: 1px solid #093349;
+      background-color: #e6f5f2; 
+      padding: 0 0.2rem;
+      border-radius: 4px;
+    }
 
-  .card-date {
-    position: absolute;
-    bottom: 0.8rem;
-    right: 1rem;
-    font-size: 0.7rem;
-    color: var(--secondary);
-    opacity: 0.5;
-    pointer-events: none;
-  }
+    .card-date {
+      position: absolute;
+      bottom: 0.8rem;
+      right: 1rem;
+      font-size: 0.7rem;
+      color: var(--secondary);
+      opacity: 0.5;
+      pointer-events: none;
+    }
     
-  .toggle {
-    margin-top: 1rem;
-    background-color: var(--accent);
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    transition: background-color 0.3s ease;
-  }
+    .toggle {
+      margin-top: 1rem;
+      align-self: flex-start;
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background-color 0.3s ease;
+    }
 
-  .toggle:hover {
-    background-color: #093349;
-  }
+    .toggle:hover {
+      background-color: #093349;
+    }
 
-  .hidden {
-    display: none;
-  }
+    .hidden {
+      display: none;
+    }
 
   .gallery {
     margin-top: 4rem;
