@@ -203,12 +203,12 @@ Feel free to connect with Carsten if you or your company are looking for expert 
     </div>
   </div>
 
-  <!--GLJ-->
+  <!--HSVF-->
   <div class="team-container">
     <div class="team-card">
       <div class="card-inner">
         <div class="card-front">
-          <img src="Pics/chib-gst.png" alt="Glenn" />
+          <img src="Pics/chib-gst.png" alt="Heino" />
         </div>
         <div class="card-back">
           <h5>tbd</h5>
@@ -218,10 +218,10 @@ Feel free to connect with Carsten if you or your company are looking for expert 
       </div>
 
       <div class="team-info">
-        <h4>Glenn Jacobsen</h4>
+        <h4>Heino Skov Vedal Friis</h4>
         <p>Sales Engineer</p>
         <p>+45 7916 6592</p>
-        <p><a href="mailto:glj@semcomaritime.com">glj@semcomaritime.com</a></p>
+        <p><a href="mailto:hsvf@semcomaritime.com">hsvf@semcomaritime.com</a></p>
       </div>
     </div>
   </div>
@@ -303,84 +303,62 @@ Feel free to connect with Carsten if you or your company are looking for expert 
     <p class="copy-right">&copy; 2025 Component and Aftersales. All rights reserved.</p>
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-  AOS.init({
-    once: false,
-    mirror: true,
-  });
-
-    const buttons = document.querySelectorAll('.toggle');
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        const moreText = button.previousElementSibling;
-        moreText.classList.toggle('hidden');
-        button.textContent = moreText.classList.contains('hidden') ? 'Read more' : 'Show less';
-      });
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ once: false, mirror: true });
+ 
+  document.querySelectorAll('.toggle').forEach(button => {
+    button.addEventListener('click', () => {
+      const moreText = button.previousElementSibling;
+      moreText.classList.toggle('hidden');
+      button.textContent = moreText.classList.contains('hidden') ? 'Read more' : 'Show less';
     });
-
-  const track = document.querySelector('.slider-track');
-  const slides = document.querySelectorAll('.slide');
-  let currentIndex = 0;
-
-  setInterval(() => {
-    currentIndex++;
-    if (currentIndex > slides.length - 3) currentIndex = 0;
-    track.style.transform = `translateX(-${currentIndex * (100 / 3)}%)`;
-  }, 3000);
-
+  });
+ 
   window.addEventListener("DOMContentLoaded", () => {
-  const input = document.getElementById("search-input");
-  const clearBtn = document.getElementById("search-clear");
-  const cards = document.querySelectorAll(".card");
-  const noResults = document.getElementById("no-results");
-
-  function clearHighlights(element) {
-    element.innerHTML = element.textContent;
-  }
-
-  function highlightMatches(text, query) {
-    const regex = new RegExp(`(${query})`, 'gi');
-    return text.replace(regex, `<span class="highlight">$1</span>`);
-  }
-
-  function filterCards() {
-    const query = input.value.toLowerCase();
-    let matchCount = 0;
-
-    cards.forEach(card => {
-      const content = card.textContent.toLowerCase();
-      const rawHTML = card.innerHTML;
-
-      card.querySelectorAll("h2, p").forEach(el => clearHighlights(el));
-
-      if (content.includes(query)) {
-        card.style.display = "block";
-        matchCount++;
-
-        card.querySelectorAll("h2, p").forEach(el => {
-          const text = el.textContent;
-          if (text.toLowerCase().includes(query) && query.length > 0) {
-            el.innerHTML = highlightMatches(text, query);
-          }
-        });
-      } else {
-        card.style.display = "none";
-      }
+    const input = document.getElementById("search-input");
+    const clearBtn = document.getElementById("search-clear");
+    const cards = document.querySelectorAll(".card");
+    const noResults = document.getElementById("no-results");
+ 
+    function clearHighlights(el) {
+      el.innerHTML = el.textContent;
+    }
+ 
+    function highlightMatches(text, query) {
+      return text.replace(new RegExp(`(${query})`, 'gi'), '<span class="highlight">$1</span>');
+    }
+ 
+    function filterCards() {
+      const query = input.value.toLowerCase();
+      let matchCount = 0;
+ 
+      cards.forEach(card => {
+        card.querySelectorAll("h2, p").forEach(el => clearHighlights(el));
+        if (card.textContent.toLowerCase().includes(query)) {
+          card.style.display = "block";
+          matchCount++;
+          card.querySelectorAll("h2, p").forEach(el => {
+            if (el.textContent.toLowerCase().includes(query) && query.length > 0) {
+              el.innerHTML = highlightMatches(el.textContent, query);
+            }
+          });
+        } else {
+          card.style.display = "none";
+        }
+      });
+ 
+      noResults.style.display = matchCount === 0 ? "block" : "none";
+    }
+ 
+    input.addEventListener("input", filterCards);
+    clearBtn.addEventListener("click", () => {
+      input.value = "";
+      filterCards();
+      input.focus();
     });
-
-    noResults.style.display = matchCount === 0 ? "block" : "none";
-  }
-
-  input.addEventListener("input", filterCards);
-
-  clearBtn.addEventListener("click", () => {
-    input.value = "";
-    filterCards();
-    input.focus();
   });
-});
 </script>
-
+ 
 </body>
 </html>
